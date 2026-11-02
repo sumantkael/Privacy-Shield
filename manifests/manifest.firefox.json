@@ -5,7 +5,7 @@
   "description": "Automatically detect and visually blur sensitive information (passwords, cards, emails, API keys, tokens) with Apple-inspired ergonomics.",
   "browser_specific_settings": {
     "gecko": {
-      "id": "privacy-shield@apple-style.local",
+      "id": "privacy-shield@shieldprivacy.local",
       "strict_min_version": "109.0"
     }
   },

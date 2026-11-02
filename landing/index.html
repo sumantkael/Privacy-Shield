@@ -357,7 +357,7 @@
                   <p>Click <strong>Add</strong> when prompted. Privacy Shield is now permanently active.</p>
                   <div class="permanent-notice">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#248A3D" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    <span><strong>Permanent Status:</strong> Unlike temporary debug sessions that disappear on close, this method permanently registers Privacy Shield with ID <code>privacy-shield@apple-style.local</code>, preserving your protection across all Firefox restarts.</span>
+                    <span><strong>Permanent Status:</strong> Unlike temporary debug sessions that disappear on close, this method permanently registers Privacy Shield with ID <code>privacy-shield@shieldprivacy.local</code>, preserving your protection across all Firefox restarts.</span>
                   </div>
                 </div>
               </div>
@@ -610,103 +610,56 @@
             </div>
           </div>
 
-          <!-- Desktop Flowchart -->
-          <div class="diagram-desktop diagram-svg-container">
-            <svg viewBox="0 0 960 210" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <filter id="nodeShadow" x="-10%" y="-10%" width="120%" height="130%">
-                  <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.06"/>
-                </filter>
-              </defs>
-
-              <!-- Node 1: Web Page Content -->
-              <g transform="translate(20, 30)">
-                <rect width="160" height="140" rx="14" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5" filter="url(#nodeShadow)"/>
-                <circle cx="34" cy="36" r="14" fill="rgba(0,122,255,0.10)"/>
-                <path d="M28 36 L40 36 M34 30 L34 42" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
-                <text x="34" y="74" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="600">DOM Stream</text>
-                <text x="34" y="96" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Inputs, text nodes,</text>
-                <text x="34" y="112" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">tables &amp; dynamic SPAs</text>
-                <rect x="20" y="130" width="120" height="2" rx="1" fill="#007AFF"/>
-              </g>
-
-              <!-- Arrow 1 -->
-              <path d="M185 100 L215 100" stroke="#007AFF" stroke-width="2.5" stroke-dasharray="4,4" stroke-linecap="round"/>
-              <polygon points="215,96 225,100 215,104" fill="#007AFF"/>
-
-              <!-- Node 2: Native TreeWalker Engine -->
-              <g transform="translate(230, 30)">
-                <rect width="170" height="140" rx="14" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5" filter="url(#nodeShadow)"/>
-                <circle cx="34" cy="36" r="14" fill="rgba(52,199,89,0.10)"/>
-                <path d="M29 36 L33 40 L40 32" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="34" y="74" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="600">C++ TreeWalker</text>
-                <text x="34" y="96" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Sub-millisecond crawl</text>
-                <text x="34" y="112" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">0% recursion overhead</text>
-                <rect x="20" y="130" width="130" height="2" rx="1" fill="#34C759"/>
-              </g>
-
-              <!-- Arrow 2 -->
-              <path d="M405 100 L435 100" stroke="#34C759" stroke-width="2.5" stroke-dasharray="4,4" stroke-linecap="round"/>
-              <polygon points="435,96 445,100 435,104" fill="#34C759"/>
-
-              <!-- Node 3: Local Deterministic Validator -->
-              <g transform="translate(450, 30)">
-                <rect width="180" height="140" rx="14" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5" filter="url(#nodeShadow)"/>
-                <circle cx="34" cy="36" r="14" fill="rgba(255,149,0,0.10)"/>
-                <path d="M28 36 L34 30 L40 36 L34 42 Z" stroke="#FF9500" stroke-width="2" stroke-linejoin="round"/>
-                <text x="34" y="74" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="600">Local Validation</text>
-                <text x="34" y="96" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Luhn Mod 10 (Cards)</text>
-                <text x="34" y="112" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">RFC 5322 &amp; API Entropy</text>
-                <rect x="20" y="130" width="140" height="2" rx="1" fill="#FF9500"/>
-              </g>
-
-              <!-- Arrow 3 -->
-              <path d="M635 100 L665 100" stroke="#FF9500" stroke-width="2.5" stroke-dasharray="4,4" stroke-linecap="round"/>
-              <polygon points="665,96 675,100 665,104" fill="#FF9500"/>
-
-              <!-- Node 4: Non-Destructive DOM Application -->
-              <g transform="translate(680, 30)">
-                <rect width="250" height="140" rx="14" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5" filter="url(#nodeShadow)"/>
-                <circle cx="34" cy="36" r="14" fill="rgba(0,122,255,0.10)"/>
-                <path d="M28 32 H40 V42 H28 Z" fill="none" stroke="#007AFF" stroke-width="2" stroke-linejoin="round"/>
-                <text x="34" y="74" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="600">Non-Destructive Blur Layer</text>
-                <text x="34" y="96" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Parent CSS class + Inline mark</text>
-                <text x="34" y="112" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Hover reveal / Green pin</text>
-                <rect x="20" y="130" width="210" height="2" rx="1" fill="#007AFF"/>
-              </g>
-            </svg>
-          </div>
-
-          <!-- Mobile Responsive Vertical Pipeline -->
-          <div class="diagram-mobile">
-            <div class="flow-step">
-              <div class="flow-step-badge blue">STAGE 1 : INGESTION</div>
-              <h4 class="flow-step-title">DOM Stream</h4>
-              <p class="flow-step-desc">Dynamic DOM inputs, text nodes, tables, and SPA feeds.</p>
+          <div class="pipeline-track">
+            <div class="pipeline-node">
+              <div class="node-badge blue">STAGE 1 : INGESTION</div>
+              <div class="node-icon-title">
+                <div class="node-icon-dot blue"></div>
+                <h4 class="node-title">DOM Stream</h4>
+              </div>
+              <p class="node-desc">Dynamic DOM inputs, text nodes, tables, and SPA feeds.</p>
             </div>
-            <div class="flow-connector">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+
+            <div class="pipeline-arrow" aria-hidden="true">
+              <svg class="arrow-h" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg class="arrow-v" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
             </div>
-            <div class="flow-step">
-              <div class="flow-step-badge green">STAGE 2 : TRAVERSAL</div>
-              <h4 class="flow-step-title">C++ TreeWalker</h4>
-              <p class="flow-step-desc">Sub-millisecond crawl with 0% recursion overhead.</p>
+
+            <div class="pipeline-node">
+              <div class="node-badge green">STAGE 2 : TRAVERSAL</div>
+              <div class="node-icon-title">
+                <div class="node-icon-dot green"></div>
+                <h4 class="node-title">C++ TreeWalker</h4>
+              </div>
+              <p class="node-desc">Sub-millisecond crawl with 0% recursion overhead and low memory.</p>
             </div>
-            <div class="flow-connector">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+
+            <div class="pipeline-arrow" aria-hidden="true">
+              <svg class="arrow-h" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg class="arrow-v" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
             </div>
-            <div class="flow-step">
-              <div class="flow-step-badge amber">STAGE 3 : VALIDATION</div>
-              <h4 class="flow-step-title">Local Validation</h4>
-              <p class="flow-step-desc">Luhn Mod 10 check for cards, RFC 5322 regex for emails, and high-entropy secret detection.</p>
+
+            <div class="pipeline-node">
+              <div class="node-badge amber">STAGE 3 : VALIDATION</div>
+              <div class="node-icon-title">
+                <div class="node-icon-dot amber"></div>
+                <h4 class="node-title">Local Validation</h4>
+              </div>
+              <p class="node-desc">Mod 10 Luhn check for cards, RFC 5322 regex, and secret entropy.</p>
             </div>
-            <div class="flow-connector">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+
+            <div class="pipeline-arrow" aria-hidden="true">
+              <svg class="arrow-h" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg class="arrow-v" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
             </div>
-            <div class="flow-step">
-              <div class="flow-step-badge blue">STAGE 4 : MASKING</div>
-              <h4 class="flow-step-title">Non-Destructive Blur Layer</h4>
-              <p class="flow-step-desc">Parent CSS class plus inline mark with hover reveal and green pin controls.</p>
+
+            <div class="pipeline-node">
+              <div class="node-badge blue">STAGE 4 : MASKING</div>
+              <div class="node-icon-title">
+                <div class="node-icon-dot blue"></div>
+                <h4 class="node-title">Non-Destructive Blur</h4>
+              </div>
+              <p class="node-desc">Parent CSS class plus inline mark with hover reveal and pin controls.</p>
             </div>
           </div>
         </div>
@@ -726,91 +679,58 @@
             </div>
           </div>
 
-          <!-- Desktop Flowchart -->
-          <div class="diagram-desktop diagram-svg-container">
-            <svg viewBox="0 0 960 170" xmlns="http://www.w3.org/2000/svg">
-              <!-- Tier 1: Main World Guard -->
-              <g transform="translate(20, 20)">
-                <rect width="210" height="125" rx="12" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5"/>
-                <text x="24" y="42" fill="#007AFF" font-family="'Geist', sans-serif" font-size="12" font-weight="600">STAGE 1 : MAIN WORLD</text>
-                <text x="24" y="66" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="15" font-weight="600">Page Reconciliation Guard</text>
-                <text x="24" y="88" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Intercepts removeChild &amp; insertBefore</text>
-                <text x="24" y="104" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Shields React from detached node errors</text>
-              </g>
-
-              <!-- Connection 1 -->
-              <path d="M235 82 L275 82" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
-              <polygon points="275,78 285,82 275,86" fill="#007AFF"/>
-
-              <!-- Tier 2: Hydration Lifecycle Sync -->
-              <g transform="translate(290, 20)">
-                <rect width="210" height="125" rx="12" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5"/>
-                <text x="24" y="42" fill="#34C759" font-family="'Geist', sans-serif" font-size="12" font-weight="600">STAGE 2 : LIFECYCLE</text>
-                <text x="24" y="66" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="15" font-weight="600">Hydration Synchronization</text>
-                <text x="24" y="88" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Waits for initial DOM hydration</text>
-                <text x="24" y="104" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Eliminates SSR hydration mismatches</text>
-              </g>
-
-              <!-- Connection 2 -->
-              <path d="M505 82 L545 82" stroke="#34C759" stroke-width="2" stroke-linecap="round"/>
-              <polygon points="545,78 555,82 545,86" fill="#34C759"/>
-
-              <!-- Tier 3: Parent-Level Protection -->
-              <g transform="translate(560, 20)">
-                <rect width="210" height="125" rx="12" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5"/>
-                <text x="24" y="42" fill="#FF9500" font-family="'Geist', sans-serif" font-size="12" font-weight="600">STAGE 3 : NON-DESTRUCTIVE</text>
-                <text x="24" y="66" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="15" font-weight="600">Parent-Class Blurring</text>
-                <text x="24" y="88" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Underlying text node stays in DOM</text>
-                <text x="24" y="104" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Fiber tree pointers remain 100% valid</text>
-              </g>
-
-              <!-- Connection 3 -->
-              <path d="M775 82 L815 82" stroke="#FF9500" stroke-width="2" stroke-linecap="round"/>
-              <polygon points="815,78 825,82 815,86" fill="#FF9500"/>
-
-              <!-- Tier 4: Stable Render -->
-              <g transform="translate(830, 20)">
-                <rect width="110" height="125" rx="12" fill="rgba(52,199,89,0.10)" stroke="#34C759" stroke-width="1.5"/>
-                <text x="18" y="52" fill="#34C759" font-family="'Geist', sans-serif" font-size="11" font-weight="600">RESULT</text>
-                <text x="18" y="78" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="700">100% Stable</text>
-                <text x="18" y="100" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Zero Blackouts</text>
-              </g>
-            </svg>
-          </div>
-
-          <!-- Mobile Responsive Vertical Pipeline -->
-          <div class="diagram-mobile">
-            <div class="flow-step">
-              <div class="flow-step-badge blue">STAGE 1 : MAIN WORLD</div>
-              <h4 class="flow-step-title">Page Reconciliation Guard</h4>
-              <p class="flow-step-desc">Intercepts removeChild &amp; insertBefore. Shields React from detached node errors.</p>
+          <div class="pipeline-track">
+            <div class="pipeline-node">
+              <div class="node-badge blue">STAGE 1 : MAIN WORLD</div>
+              <div class="node-icon-title">
+                <div class="node-icon-dot blue"></div>
+                <h4 class="node-title">Page Reconciliation Guard</h4>
+              </div>
+              <p class="node-desc">Intercepts removeChild &amp; insertBefore to shield React from detached node errors.</p>
             </div>
-            <div class="flow-connector">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+
+            <div class="pipeline-arrow" aria-hidden="true">
+              <svg class="arrow-h" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg class="arrow-v" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
             </div>
-            <div class="flow-step">
-              <div class="flow-step-badge green">STAGE 2 : LIFECYCLE</div>
-              <h4 class="flow-step-title">Hydration Synchronization</h4>
-              <p class="flow-step-desc">Waits for initial DOM hydration. Eliminates Next.js &amp; SSR hydration mismatches.</p>
+
+            <div class="pipeline-node">
+              <div class="node-badge green">STAGE 2 : LIFECYCLE</div>
+              <div class="node-icon-title">
+                <div class="node-icon-dot green"></div>
+                <h4 class="node-title">Hydration Synchronization</h4>
+              </div>
+              <p class="node-desc">Waits for initial DOM hydration to eliminate SSR hydration mismatches.</p>
             </div>
-            <div class="flow-connector">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+
+            <div class="pipeline-arrow" aria-hidden="true">
+              <svg class="arrow-h" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg class="arrow-v" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
             </div>
-            <div class="flow-step">
-              <div class="flow-step-badge amber">STAGE 3 : NON-DESTRUCTIVE</div>
-              <h4 class="flow-step-title">Parent-Class Blurring</h4>
-              <p class="flow-step-desc">Underlying text node stays in DOM. Fiber tree pointers remain 100% valid.</p>
+
+            <div class="pipeline-node">
+              <div class="node-badge amber">STAGE 3 : NON-DESTRUCTIVE</div>
+              <div class="node-icon-title">
+                <div class="node-icon-dot amber"></div>
+                <h4 class="node-title">Parent-Class Blurring</h4>
+              </div>
+              <p class="node-desc">Underlying text node stays in DOM so React fiber tree pointers remain 100% valid.</p>
             </div>
-            <div class="flow-connector">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+
+            <div class="pipeline-arrow" aria-hidden="true">
+              <svg class="arrow-h" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg class="arrow-v" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
             </div>
-            <div class="flow-step result">
-              <div class="flow-step-badge success">RESULT : ZERO BLACKOUTS</div>
-              <h4 class="flow-step-title">100% Stable Execution</h4>
-              <p class="flow-step-desc">Continuous real-time screening without crashes or hydration mismatches.</p>
+
+            <div class="pipeline-node result">
+              <div class="node-badge success">RESULT : ZERO BLACKOUTS</div>
+              <div class="node-icon-title">
+                <div class="node-icon-dot green"></div>
+                <h4 class="node-title">100% Stable Execution</h4>
+              </div>
+              <p class="node-desc">Continuous real-time screening without layout shifts, crashes, or blackouts.</p>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

@@ -1115,129 +1115,149 @@ body {
   flex-shrink: 0;
 }
 
-.diagram-desktop {
-  display: block;
-  width: 100%;
-}
-
-.diagram-mobile {
-  display: none;
-  flex-direction: column;
-  gap: 0;
+/* Responsive Unified Pipeline Architecture */
+.pipeline-track {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.diagram-svg-container {
-  width: 100%;
-  max-width: 100%;
+.pipeline-node {
+  flex: 1 1 0;
   min-width: 0;
-  overflow: hidden;
-  padding: 6px 0;
-  box-sizing: border-box;
-}
-
-.diagram-svg-container svg {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  height: auto;
-  display: block;
-}
-
-/* Mobile Responsive Vertical Flow Pipeline */
-.flow-step {
   background: var(--bg-subtle);
   border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 13px 14px;
+  border-radius: 14px;
+  padding: 16px 14px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 100%;
+  gap: 7px;
   box-sizing: border-box;
 }
 
-.flow-step.result {
-  background: rgba(52, 199, 89, 0.05);
-  border-color: rgba(52, 199, 89, 0.25);
+.pipeline-node.result {
+  background: rgba(52, 199, 89, 0.04);
+  border-color: rgba(52, 199, 89, 0.28);
 }
 
-.flow-step-badge {
+.node-badge {
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 2px 8px;
+  letter-spacing: 0.05em;
+  padding: 2.5px 8px;
   border-radius: var(--radius-full);
   width: fit-content;
   display: inline-block;
+  line-height: 1.25;
 }
 
-.flow-step-badge.blue {
+.node-badge.blue {
   background: rgba(0, 122, 255, 0.08);
   color: #007AFF;
   border: 1px solid rgba(0, 122, 255, 0.2);
 }
 
-.flow-step-badge.green {
+.node-badge.green {
   background: rgba(52, 199, 89, 0.10);
   color: #34C759;
   border: 1px solid rgba(52, 199, 89, 0.25);
 }
 
-.flow-step-badge.amber {
+.node-badge.amber {
   background: rgba(255, 149, 0, 0.10);
   color: #FF9500;
   border: 1px solid rgba(255, 149, 0, 0.25);
 }
 
-.flow-step-badge.success {
+.node-badge.success {
   background: rgba(52, 199, 89, 0.14);
   color: #248A3D;
   border: 1px solid rgba(52, 199, 89, 0.35);
 }
 
-.flow-step-title {
+.node-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.node-icon-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.node-icon-dot.blue { background: #007AFF; }
+.node-icon-dot.green { background: #34C759; }
+.node-icon-dot.amber { background: #FF9500; }
+
+.node-title {
   font-family: var(--font-display);
   font-size: 14px;
   font-weight: 500;
   color: var(--text-primary);
   margin: 0;
+  line-height: 1.3;
+  word-break: break-word;
 }
 
-.flow-step-desc {
+.node-desc {
   font-size: 12px;
   font-weight: 300;
   color: var(--text-secondary);
   line-height: 1.45;
   margin: 0;
+  word-break: break-word;
 }
 
-.flow-connector {
+.pipeline-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 0;
+  flex-shrink: 0;
   color: var(--text-tertiary);
+  width: 20px;
 }
 
-.flow-connector svg {
-  width: 14px;
-  height: 14px;
+.pipeline-arrow .arrow-h {
   display: block;
 }
 
+.pipeline-arrow .arrow-v {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .pipeline-track {
+    flex-direction: column;
+    gap: 0;
+  }
+  .pipeline-arrow {
+    width: 100%;
+    padding: 7px 0;
+    color: var(--text-tertiary);
+  }
+  .pipeline-arrow .arrow-h {
+    display: none;
+  }
+  .pipeline-arrow .arrow-v {
+    display: block;
+  }
+  .pipeline-node {
+    width: 100%;
+    padding: 14px 14px;
+  }
+}
+
 @media (max-width: 768px) {
-  .diagram-desktop {
-    display: none !important;
-  }
-  .diagram-mobile {
-    display: flex !important;
-  }
   .diagram-card {
-    padding: 16px 14px;
+    padding: 18px 14px;
     border-radius: 16px;
   }
   .diagram-header {
@@ -1663,17 +1683,17 @@ body {
     padding: 14px 12px;
     border-radius: 14px;
   }
-  .flow-step {
+  .pipeline-node {
     padding: 12px 12px;
     border-radius: 10px;
   }
-  .flow-step-title {
+  .node-title {
     font-size: 13.5px;
   }
-  .flow-step-desc {
+  .node-desc {
     font-size: 11.5px;
   }
-  .flow-step-badge {
+  .node-badge {
     font-size: 9.5px;
     padding: 2px 7px;
   }
@@ -1701,14 +1721,14 @@ body {
     padding: 12px 10px;
     border-radius: 12px;
   }
-  .flow-step {
+  .pipeline-node {
     padding: 10px 10px;
     border-radius: 8px;
   }
-  .flow-step-title {
+  .node-title {
     font-size: 13px;
   }
-  .flow-step-desc {
+  .node-desc {
     font-size: 11px;
   }
 }
