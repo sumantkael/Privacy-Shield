@@ -610,7 +610,8 @@
             </div>
           </div>
 
-          <div class="diagram-svg-container">
+          <!-- Desktop Flowchart -->
+          <div class="diagram-desktop diagram-svg-container">
             <svg viewBox="0 0 960 210" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <filter id="nodeShadow" x="-10%" y="-10%" width="120%" height="130%">
@@ -675,6 +676,39 @@
               </g>
             </svg>
           </div>
+
+          <!-- Mobile Responsive Vertical Pipeline -->
+          <div class="diagram-mobile">
+            <div class="flow-step">
+              <div class="flow-step-badge blue">STAGE 1 : INGESTION</div>
+              <h4 class="flow-step-title">DOM Stream</h4>
+              <p class="flow-step-desc">Dynamic DOM inputs, text nodes, tables, and SPA feeds.</p>
+            </div>
+            <div class="flow-connector">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-badge green">STAGE 2 : TRAVERSAL</div>
+              <h4 class="flow-step-title">C++ TreeWalker</h4>
+              <p class="flow-step-desc">Sub-millisecond crawl with 0% recursion overhead.</p>
+            </div>
+            <div class="flow-connector">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-badge amber">STAGE 3 : VALIDATION</div>
+              <h4 class="flow-step-title">Local Validation</h4>
+              <p class="flow-step-desc">Luhn Mod 10 check for cards, RFC 5322 regex for emails, and high-entropy secret detection.</p>
+            </div>
+            <div class="flow-connector">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-badge blue">STAGE 4 : MASKING</div>
+              <h4 class="flow-step-title">Non-Destructive Blur Layer</h4>
+              <p class="flow-step-desc">Parent CSS class plus inline mark with hover reveal and green pin controls.</p>
+            </div>
+          </div>
         </div>
 
         <!-- Flowchart 2: Universal Framework & Zero-Blackout Architecture -->
@@ -692,7 +726,8 @@
             </div>
           </div>
 
-          <div class="diagram-svg-container">
+          <!-- Desktop Flowchart -->
+          <div class="diagram-desktop diagram-svg-container">
             <svg viewBox="0 0 960 170" xmlns="http://www.w3.org/2000/svg">
               <!-- Tier 1: Main World Guard -->
               <g transform="translate(20, 20)">
@@ -742,6 +777,40 @@
               </g>
             </svg>
           </div>
+
+          <!-- Mobile Responsive Vertical Pipeline -->
+          <div class="diagram-mobile">
+            <div class="flow-step">
+              <div class="flow-step-badge blue">STAGE 1 : MAIN WORLD</div>
+              <h4 class="flow-step-title">Page Reconciliation Guard</h4>
+              <p class="flow-step-desc">Intercepts removeChild &amp; insertBefore. Shields React from detached node errors.</p>
+            </div>
+            <div class="flow-connector">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-badge green">STAGE 2 : LIFECYCLE</div>
+              <h4 class="flow-step-title">Hydration Synchronization</h4>
+              <p class="flow-step-desc">Waits for initial DOM hydration. Eliminates Next.js &amp; SSR hydration mismatches.</p>
+            </div>
+            <div class="flow-connector">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-badge amber">STAGE 3 : NON-DESTRUCTIVE</div>
+              <h4 class="flow-step-title">Parent-Class Blurring</h4>
+              <p class="flow-step-desc">Underlying text node stays in DOM. Fiber tree pointers remain 100% valid.</p>
+            </div>
+            <div class="flow-connector">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+            <div class="flow-step result">
+              <div class="flow-step-badge success">RESULT : ZERO BLACKOUTS</div>
+              <h4 class="flow-step-title">100% Stable Execution</h4>
+              <p class="flow-step-desc">Continuous real-time screening without crashes or hydration mismatches.</p>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>

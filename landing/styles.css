@@ -1115,15 +1115,26 @@ body {
   flex-shrink: 0;
 }
 
+.diagram-desktop {
+  display: block;
+  width: 100%;
+}
+
+.diagram-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .diagram-svg-container {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   padding: 6px 0;
   box-sizing: border-box;
-  scrollbar-width: thin;
 }
 
 .diagram-svg-container svg {
@@ -1134,26 +1145,112 @@ body {
   display: block;
 }
 
+/* Mobile Responsive Vertical Flow Pipeline */
+.flow-step {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 13px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flow-step.result {
+  background: rgba(52, 199, 89, 0.05);
+  border-color: rgba(52, 199, 89, 0.25);
+}
+
+.flow-step-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  display: inline-block;
+}
+
+.flow-step-badge.blue {
+  background: rgba(0, 122, 255, 0.08);
+  color: #007AFF;
+  border: 1px solid rgba(0, 122, 255, 0.2);
+}
+
+.flow-step-badge.green {
+  background: rgba(52, 199, 89, 0.10);
+  color: #34C759;
+  border: 1px solid rgba(52, 199, 89, 0.25);
+}
+
+.flow-step-badge.amber {
+  background: rgba(255, 149, 0, 0.10);
+  color: #FF9500;
+  border: 1px solid rgba(255, 149, 0, 0.25);
+}
+
+.flow-step-badge.success {
+  background: rgba(52, 199, 89, 0.14);
+  color: #248A3D;
+  border: 1px solid rgba(52, 199, 89, 0.35);
+}
+
+.flow-step-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.flow-step-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.flow-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+  color: var(--text-tertiary);
+}
+
+.flow-connector svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
 @media (max-width: 768px) {
+  .diagram-desktop {
+    display: none !important;
+  }
+  .diagram-mobile {
+    display: flex !important;
+  }
   .diagram-card {
-    padding: 16px 12px;
+    padding: 16px 14px;
     border-radius: 16px;
   }
   .diagram-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .diagram-title {
     font-size: 16.5px;
   }
   .diagram-subtitle {
     font-size: 12.5px;
-  }
-  .diagram-svg-container svg {
-    min-width: 540px;
-    width: 540px;
   }
 }
 
@@ -1562,6 +1659,24 @@ body {
   .container {
     padding: 0 14px;
   }
+  .diagram-card {
+    padding: 14px 12px;
+    border-radius: 14px;
+  }
+  .flow-step {
+    padding: 12px 12px;
+    border-radius: 10px;
+  }
+  .flow-step-title {
+    font-size: 13.5px;
+  }
+  .flow-step-desc {
+    font-size: 11.5px;
+  }
+  .flow-step-badge {
+    font-size: 9.5px;
+    padding: 2px 7px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -1581,5 +1696,19 @@ body {
   .btn-primary, .btn-secondary {
     font-size: 13px;
     padding: 10px 14px;
+  }
+  .diagram-card {
+    padding: 12px 10px;
+    border-radius: 12px;
+  }
+  .flow-step {
+    padding: 10px 10px;
+    border-radius: 8px;
+  }
+  .flow-step-title {
+    font-size: 13px;
+  }
+  .flow-step-desc {
+    font-size: 11px;
   }
 }
