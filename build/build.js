@@ -19,7 +19,6 @@ const DIST_CHROME = path.join(ROOT_DIR, 'dist', 'chrome');
 const DIST_FIREFOX = path.join(ROOT_DIR, 'dist', 'firefox');
 const LANDING_DIR = path.join(ROOT_DIR, 'landing');
 const DOWNLOADS_DIR = path.join(LANDING_DIR, 'downloads');
-const DOCS_DIR = path.join(ROOT_DIR, 'docs');
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 
 function copyRecursiveSync(src, dest) {
@@ -152,14 +151,8 @@ function packageReleaseAssets() {
     console.warn('⚠️ Release packaging notice:', err.message);
   }
 
-  // Synchronize landing website to docs/ (for GitHub Pages) and public/ (for Vercel)
+  // Synchronize landing website to public/ for Vercel
   try {
-    if (fs.existsSync(DOCS_DIR)) {
-      fs.rmSync(DOCS_DIR, { recursive: true, force: true });
-    }
-    copyRecursiveSync(LANDING_DIR, DOCS_DIR);
-    console.log('✅ Synchronized landing page to docs/ for GitHub Pages');
-
     if (fs.existsSync(PUBLIC_DIR)) {
       fs.rmSync(PUBLIC_DIR, { recursive: true, force: true });
     }
@@ -180,7 +173,7 @@ async function run() {
     // Build Firefox distribution
     await buildTarget('Firefox', DIST_FIREFOX, path.join(ROOT_DIR, 'manifests', 'manifest.firefox.json'));
 
-    // Package release zip archives and sync docs/ for GitHub Pages
+    // Package release zip archives and sync public/ for Vercel
     packageReleaseAssets();
 
     console.log('\n🎉 Cross-browser builds & release packages ready!\n');

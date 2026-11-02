@@ -59,9 +59,10 @@ html {
 }
 
 html, body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   max-width: 100vw;
   width: 100%;
+  position: relative;
 }
 
 body {
@@ -145,6 +146,12 @@ body {
   list-style: none;
 }
 
+@media (max-width: 860px) {
+  .nav-links {
+    display: none !important;
+  }
+}
+
 .nav-link {
   font-family: var(--font-body);
   font-size: 13.5px;
@@ -183,6 +190,29 @@ body {
 
 .btn-nav-download:hover {
   background: var(--btn-dark-hover);
+}
+
+@media (max-width: 480px) {
+  .navbar-inner {
+    height: 54px;
+  }
+  .brand-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+  }
+  .brand-title {
+    font-size: 14.5px;
+  }
+  .btn-nav-download {
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 5px;
+  }
+  .btn-nav-download svg {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 /* Hero Section (Matching Image 2 Minimalism) */
@@ -283,14 +313,41 @@ body {
 }
 
 @media (max-width: 640px) {
+  .hero-section {
+    padding: 38px 0 28px;
+  }
+  .hero-pill {
+    font-size: 11px;
+    padding: 4px 12px;
+    margin-bottom: 18px;
+    line-height: 1.35;
+    text-align: center;
+    border-radius: 20px;
+  }
+  .hero-title {
+    font-size: clamp(24px, 6.8vw, 38px);
+    line-height: 1.16;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+  }
+  .hero-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    padding: 0 4px;
+  }
   .hero-cta-group {
     flex-direction: column;
-    max-width: 320px;
-    margin: 0 auto 36px;
+    width: 100%;
+    max-width: 100%;
+    gap: 10px;
+    margin: 0 auto 32px;
   }
   .btn-primary, .btn-secondary {
     width: 100%;
     justify-content: center;
+    padding: 11px 18px;
+    font-size: 13.5px;
   }
 }
 
@@ -386,11 +443,12 @@ body {
   gap: 8px;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 640px) {
   .mockup-data-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 3px;
+    padding: 7px 0;
   }
 }
 
@@ -423,9 +481,12 @@ body {
 
 /* Flat Privacy Shield Blur Mask */
 .ps-shield-blur {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  white-space: normal;
   filter: blur(5.5px);
   user-select: none;
   cursor: pointer;
@@ -719,6 +780,46 @@ body {
   border-color: var(--btn-dark);
 }
 
+@media (max-width: 520px) {
+  .install-block-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+  .browser-icon-pill {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .browser-icon-pill svg,
+  .browser-icon-pill img {
+    width: 22px;
+    height: 22px;
+  }
+  .browser-info h3 {
+    font-size: 16px;
+  }
+  .url-copy-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  .url-copy-left {
+    width: 100%;
+  }
+  .url-copy-code {
+    font-size: 11.5px;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  .btn-copy-action {
+    width: 100%;
+    justify-content: center;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
 .copy-shortcut-hint {
   font-size: 11px;
   font-weight: 300;
@@ -819,6 +920,18 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .comparison-card {
+    padding: 16px 12px;
+    border-radius: 16px;
+    gap: 12px;
+  }
 }
 
 .comparison-badge {
@@ -874,6 +987,9 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (max-width: 992px) {
@@ -885,6 +1001,7 @@ body {
 @media (max-width: 600px) {
   .usecases-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
@@ -897,6 +1014,17 @@ body {
   flex-direction: column;
   gap: 10px;
   box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .usecase-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
 }
 
 .usecase-icon-box {
@@ -930,6 +1058,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 28px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .diagram-card {
@@ -938,6 +1069,11 @@ body {
   border-radius: var(--radius-lg);
   padding: 28px;
   box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .diagram-header {
@@ -946,6 +1082,7 @@ body {
   justify-content: space-between;
   margin-bottom: 20px;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .diagram-title {
@@ -981,10 +1118,12 @@ body {
 .diagram-svg-container {
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding: 6px 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
 }
 
 .diagram-svg-container svg {
@@ -996,8 +1135,25 @@ body {
 }
 
 @media (max-width: 768px) {
+  .diagram-card {
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+  .diagram-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .diagram-title {
+    font-size: 16.5px;
+  }
+  .diagram-subtitle {
+    font-size: 12.5px;
+  }
   .diagram-svg-container svg {
-    min-width: 580px;
+    min-width: 540px;
+    width: 540px;
   }
 }
 
@@ -1006,6 +1162,9 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (max-width: 992px) {
@@ -1017,6 +1176,7 @@ body {
 @media (max-width: 600px) {
   .tech-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 
@@ -1029,6 +1189,17 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .tech-card {
+    padding: 18px 14px;
+    border-radius: 14px;
+  }
 }
 
 .tech-icon-box {
@@ -1071,6 +1242,17 @@ body {
   border-radius: var(--radius-lg);
   padding: 28px;
   box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .sandbox-card {
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
 }
 
 .sandbox-presets {
@@ -1144,6 +1326,7 @@ body {
   line-height: 1.5;
   resize: vertical;
   outline: none;
+  box-sizing: border-box;
 }
 
 .sandbox-input:focus {
@@ -1163,6 +1346,20 @@ body {
   font-weight: 300;
   line-height: 1.5;
   overflow-y: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .sandbox-input,
+  .sandbox-output {
+    height: 120px;
+    font-size: 12.5px;
+    padding: 10px 12px;
+  }
+  .preset-chip {
+    font-size: 11.5px;
+    padding: 4px 10px;
+  }
 }
 
 /* Security Commitment Checklist */
@@ -1172,6 +1369,17 @@ body {
   border-radius: var(--radius-lg);
   padding: 32px;
   box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .security-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
 }
 
 .security-checklist {
@@ -1224,6 +1432,18 @@ body {
   font-weight: 300;
   color: var(--text-secondary);
   line-height: 1.45;
+}
+
+@media (max-width: 600px) {
+  .checklist-item {
+    gap: 10px;
+  }
+  .check-text h4 {
+    font-size: 13.5px;
+  }
+  .check-text p {
+    font-size: 12px;
+  }
 }
 
 /* Footer */
@@ -1308,4 +1528,58 @@ body {
 
 .footer-link:hover {
   color: var(--text-primary);
+}
+
+/* Small Screen (iPhone SE, Small Mobile) Responsiveness */
+@media (max-width: 600px) {
+  .section {
+    padding: 38px 0 26px;
+  }
+  .section-header {
+    margin-bottom: 26px;
+  }
+  .section-tag {
+    font-size: 10.5px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: clamp(21px, 5.8vw, 30px);
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .section-description {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .footer {
+    padding: 32px 0 24px;
+    margin-top: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 10px;
+  }
+  .brand-title {
+    font-size: 13.5px;
+  }
+  .hero-pill {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  .hero-title {
+    font-size: 22px;
+  }
+  .btn-primary, .btn-secondary {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
 }
