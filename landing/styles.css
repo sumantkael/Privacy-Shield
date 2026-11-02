@@ -1077,12 +1077,7 @@ body {
 }
 
 .diagram-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   margin-bottom: 20px;
-  gap: 16px;
-  flex-wrap: wrap;
 }
 
 .diagram-title {
@@ -1099,20 +1094,6 @@ body {
   font-weight: 300;
   color: var(--text-secondary);
   max-width: 600px;
-}
-
-.diagram-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 12px;
-  border-radius: var(--radius-full);
-  font-size: 11.5px;
-  font-weight: 400;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  flex-shrink: 0;
 }
 
 /* Responsive Unified Pipeline Architecture */
@@ -1180,23 +1161,6 @@ body {
   border: 1px solid rgba(52, 199, 89, 0.35);
 }
 
-.node-icon-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.node-icon-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.node-icon-dot.blue { background: #007AFF; }
-.node-icon-dot.green { background: #34C759; }
-.node-icon-dot.amber { background: #FF9500; }
-
 .node-title {
   font-family: var(--font-display);
   font-size: 14px;
@@ -1261,9 +1225,6 @@ body {
     border-radius: 16px;
   }
   .diagram-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
     margin-bottom: 14px;
   }
   .diagram-title {
