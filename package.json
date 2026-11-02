@@ -1,7 +1,7 @@
 {
   "name": "privacy-shield",
   "version": "1.0.0",
-  "description": "Cross-browser privacy extension that visually blurs sensitive information in Apple style using Geist and Manrope fonts.",
+  "description": "Cross-browser privacy extension that automatically blurs sensitive information locally in real time.",
   "type": "module",
   "scripts": {
     "build": "node build/build.js",
