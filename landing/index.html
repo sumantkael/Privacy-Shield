@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Shield : Apple-Grade On-Device Visual Data Protection</title>
+  <meta name="description" content="Automatic sensitive data protection for Google Chrome and Mozilla Firefox. Visually blurs passwords, cards, emails, and API keys with zero latency and zero data transmission.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow-secondary"></div>
+
+  <!-- Sticky Frosted Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#" class="nav-brand">
+        <img src="assets/icons/icon.svg" alt="Privacy Shield" class="brand-icon">
+        <span class="brand-title">Privacy Shield</span>
+        <span class="brand-badge">v1.0</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#install" class="nav-link">How to Install</a></li>
+          <li><a href="#comparison" class="nav-link">Visual Demo</a></li>
+          <li><a href="#architecture" class="nav-link">Architecture</a></li>
+          <li><a href="#technology" class="nav-link">Technology</a></li>
+          <li><a href="#sandbox" class="nav-link">Interactive Demo</a></li>
+          <li><a href="#security" class="nav-link">Security Model</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#install" class="btn-nav-download">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-pill">
+        <span>Local-First Client Architecture : Zero Data Transmission</span>
+      </div>
+
+      <h1 class="hero-title">Automatic sensitive data protection for your web browser.</h1>
+      
+      <p class="hero-subtitle">
+        Privacy Shield detects passwords, credit cards, emails, API keys, and session tokens locally in real time. Designed with Apple ergonomics, zero latency, and zero telemetry.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="downloads/privacy-shield-chrome.zip" class="btn-primary" download>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download for Chromium</span>
+        </a>
+
+        <a href="downloads/privacy-shield-firefox.xpi" class="btn-secondary" download>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download for Firefox (.xpi)</span>
+        </a>
+      </div>
+
+      <!-- Live Interactive Browser Mockup inside Hero -->
+      <div class="hero-mockup-wrapper">
+        <div class="browser-mockup">
+          <div class="browser-header">
+            <div class="browser-address-bar">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <span>console.workspace.internal/billing</span>
+            </div>
+          </div>
+
+          <div class="browser-content">
+            <div class="mockup-dashboard-grid">
+              <div class="mockup-card">
+                <div class="mockup-card-title">Customer Account Profile</div>
+
+                <div class="mockup-data-row">
+                  <span class="mockup-label">Account Owner</span>
+                  <span class="mockup-value-wrapper">Sarah Connor (Engineering Director)</span>
+                </div>
+
+                <div class="mockup-data-row">
+                  <span class="mockup-label">Primary Email</span>
+                  <span class="mockup-value-wrapper">
+                    <mark class="ps-shield-blur" tabindex="0" role="button">sarah.connor@cyberdyne.org</mark>
+                  </span>
+                </div>
+
+                <div class="mockup-data-row">
+                  <span class="mockup-label">Corporate Payment Card</span>
+                  <span class="mockup-value-wrapper">
+                    <mark class="ps-shield-blur" tabindex="0" role="button">4532 0150 1234 5671</mark>
+                  </span>
+                </div>
+
+                <div class="mockup-data-row">
+                  <span class="mockup-label">Contact Phone</span>
+                  <span class="mockup-value-wrapper">
+                    <mark class="ps-shield-blur" tabindex="0" role="button">+1 (555) 234-5678</mark>
+                  </span>
+                </div>
+
+                <div class="mockup-data-row">
+                  <span class="mockup-label">Production API Secret</span>
+                  <span class="mockup-value-wrapper" style="font-family: var(--font-mono); font-size: 13px;">
+                    <mark class="ps-shield-blur" tabindex="0" role="button">sk-proj-98a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1</mark>
+                  </span>
+                </div>
+
+                <div class="mockup-data-row">
+                  <span class="mockup-label">JWT Session Bearer</span>
+                  <span class="mockup-value-wrapper" style="font-family: var(--font-mono); font-size: 12px;">
+                    <mark class="ps-shield-blur" tabindex="0" role="button">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.doNotLeakThisToken44</mark>
+                  </span>
+                </div>
+              </div>
+
+              <div class="mockup-sidebar-card">
+                <div class="mockup-card">
+                  <div class="mockup-card-title">Interactive Blur Controls</div>
+                  <div class="mockup-hint">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="16" x2="12" y2="12"/>
+                      <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <span>Hover over any masked field to preview. Click the pin icon to lock it revealed.</span>
+                  </div>
+                </div>
+
+                <div class="mockup-card download-shortcut-card">
+                  <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">Install Privacy Shield</div>
+                  <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 14px;">Instant client-side protection for Chrome and Firefox.</div>
+                  <a href="#install" class="btn-primary btn-sm-mockup">View Installation Guide</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual Installation Blocks Section (PROMINENT RIGHT AFTER HERO) -->
+  <section class="section install-guide-section" id="install">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Installation Guide</span>
+        <h2 class="section-title">How to install Privacy Shield in your browser.</h2>
+        <p class="section-description">
+          Download the production package for your browser below. Takes less than sixty seconds with complete developer control and zero store telemetry.
+        </p>
+      </div>
+
+      <div class="install-blocks-grid">
+        <!-- Block 1: Chromium Browsers -->
+        <div class="install-block-card">
+          <div class="install-block-top">
+            <div class="install-header-row">
+              <div class="install-browser-badge">
+                <div class="browser-icon-pill">
+                  <img src="assets/icons/chrome.svg" alt="Chromium" width="28" height="28">
+                </div>
+                <div class="browser-info">
+                  <h3>Chromium Browsers</h3>
+                  <p>Google Chrome, Brave, Microsoft Edge, Arc, Opera</p>
+                </div>
+              </div>
+              <span class="permanent-badge">Permanent Installation</span>
+            </div>
+
+            <div class="install-steps-list">
+              <div class="install-step-item">
+                <span class="step-num">1</span>
+                <div class="step-text">
+                  <p>Click the button below to download the production build <strong>privacy-shield-chrome.zip</strong>.</p>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">2</span>
+                <div class="step-text">
+                  <p>Extract the ZIP archive into a permanent directory on your machine (for example, in your <code>Documents</code> or <code>Applications</code> folder).</p>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">3</span>
+                <div class="step-text">
+                  <p>Open this address in a new browser tab:</p>
+                  <div class="url-copy-box" data-copy="chrome://extensions" role="button" tabindex="0" title="Click to copy chrome://extensions">
+                    <div class="url-copy-left">
+                      <span class="url-copy-tag">Browser Address</span>
+                      <span class="url-copy-code">chrome://extensions</span>
+                    </div>
+                    <button type="button" class="btn-copy-action" aria-label="Copy to clipboard">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                      <span class="copy-label">Copy URL</span>
+                    </button>
+                  </div>
+                  <div class="copy-shortcut-hint">Tip: Paste in the address bar using <kbd>Ctrl+V</kbd> or <kbd>Cmd+V</kbd></div>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">4</span>
+                <div class="step-text">
+                  <p>Turn on <strong>Developer mode</strong> using the toggle switch located in the upper-right corner.</p>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">5</span>
+                <div class="step-text">
+                  <p>Click <strong>Load unpacked</strong> and select the extracted folder containing <code>manifest.json</code>.</p>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">6</span>
+                <div class="step-text">
+                  <p>Privacy Shield is active immediately. Pin the shield icon to your toolbar for quick settings access.</p>
+                  <div class="permanent-notice">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#248A3D" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span><strong>Permanent Status:</strong> Chromium saves loaded unpacked extensions directly into your user profile. The extension remains active across all browser restarts and system reboots.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="install-actions">
+            <a href="downloads/privacy-shield-chrome.zip" class="btn-download-block btn-chrome-dl" download>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Download for Chromium (.zip)</span>
+            </a>
+            <span class="download-meta">Size: 290 KB : Production Build : Manifest V3</span>
+          </div>
+        </div>
+
+        <!-- Block 2: Mozilla Firefox -->
+        <div class="install-block-card">
+          <div class="install-block-top">
+            <div class="install-header-row">
+              <div class="install-browser-badge">
+                <div class="browser-icon-pill">
+                  <img src="assets/icons/firefox.svg" alt="Mozilla Firefox" width="28" height="28">
+                </div>
+                <div class="browser-info">
+                  <h3>Mozilla Firefox</h3>
+                  <p>Firefox Desktop, Developer Edition, Nightly, Floorp, ESR</p>
+                </div>
+              </div>
+              <span class="permanent-badge">Permanent Installation</span>
+            </div>
+
+            <div class="install-steps-list">
+              <div class="install-step-item">
+                <span class="step-num">1</span>
+                <div class="step-text">
+                  <p>Click below to download the permanent add-on package <strong>privacy-shield-firefox.xpi</strong>.</p>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">2</span>
+                <div class="step-text">
+                  <p>Open the Firefox advanced configuration console:</p>
+                  <div class="url-copy-box" data-copy="about:config" role="button" tabindex="0" title="Click to copy about:config">
+                    <div class="url-copy-left">
+                      <span class="url-copy-tag">Firefox Config</span>
+                      <span class="url-copy-code">about:config</span>
+                    </div>
+                    <button type="button" class="btn-copy-action" aria-label="Copy to clipboard">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                      <span class="copy-label">Copy URL</span>
+                    </button>
+                  </div>
+                  <div class="copy-shortcut-hint">Click "Accept the Risk and Continue" when prompted.</div>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">3</span>
+                <div class="step-text">
+                  <p>Search for this signature policy preference:</p>
+                  <div class="url-copy-box" data-copy="xpinstall.signatures.required" role="button" tabindex="0" title="Click to copy preference name">
+                    <div class="url-copy-left">
+                      <span class="url-copy-tag">Preference Flag</span>
+                      <span class="url-copy-code">xpinstall.signatures.required</span>
+                    </div>
+                    <button type="button" class="btn-copy-action" aria-label="Copy to clipboard">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                      <span class="copy-label">Copy Flag</span>
+                    </button>
+                  </div>
+                  <div class="copy-shortcut-hint">Double-click or click the toggle icon to set it to <strong>false</strong>. This authorizes permanent installation of offline add-on packages.</div>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">4</span>
+                <div class="step-text">
+                  <p>Navigate to the Add-ons and Themes manager:</p>
+                  <div class="url-copy-box" data-copy="about:addons" role="button" tabindex="0" title="Click to copy about:addons">
+                    <div class="url-copy-left">
+                      <span class="url-copy-tag">Add-ons Manager</span>
+                      <span class="url-copy-code">about:addons</span>
+                    </div>
+                    <button type="button" class="btn-copy-action" aria-label="Copy to clipboard">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                      <span class="copy-label">Copy URL</span>
+                    </button>
+                  </div>
+                  <div class="copy-shortcut-hint">Click the gear icon and select "Install Add-on From File...", or drag and drop <code>privacy-shield-firefox.xpi</code> directly into the page.</div>
+                </div>
+              </div>
+
+              <div class="install-step-item">
+                <span class="step-num">5</span>
+                <div class="step-text">
+                  <p>Click <strong>Add</strong> when prompted. Privacy Shield is now permanently active.</p>
+                  <div class="permanent-notice">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#248A3D" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span><strong>Permanent Status:</strong> Unlike temporary debug sessions that disappear on close, this method permanently registers Privacy Shield with ID <code>privacy-shield@apple-style.local</code>, preserving your protection across all Firefox restarts.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="install-actions">
+            <a href="downloads/privacy-shield-firefox.xpi" class="btn-download-block btn-firefox-dl" download>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Download for Firefox (.xpi)</span>
+            </a>
+            <span class="download-meta">Size: 290 KB : Permanent Package : Gecko V3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After Login Screen Protection Comparison -->
+  <section class="section" id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Visual Protection Comparison</span>
+        <h2 class="section-title">See how Privacy Shield protects sensitive logins.</h2>
+        <p class="section-description">
+          Examine an authentication portal before and after protection. Sensitive emails, passwords, OTPs, and API credentials are shielded from shoulder surfers, screen recordings, and conference calls.
+        </p>
+      </div>
+
+      <div class="comparison-grid">
+        <!-- Card 1: BEFORE Protection (Raw Exposure) -->
+        <div class="comparison-card before">
+          <div class="comparison-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span>BEFORE : Raw Screen Exposure</span>
+          </div>
+
+          <div class="comparison-svg-container">
+            <svg viewBox="0 0 440 280" xmlns="http://www.w3.org/2000/svg">
+              <!-- Window Frame -->
+              <rect width="440" height="280" rx="10" fill="#FFFFFF" stroke="rgba(255,59,48,0.3)" stroke-width="1.5"/>
+              <circle cx="20" cy="18" r="4.5" fill="#FF5F56"/>
+              <circle cx="34" cy="18" r="4.5" fill="#FFBD2E"/>
+              <circle cx="48" cy="18" r="4.5" fill="#27C93F"/>
+              <rect x="70" y="11" width="220" height="14" rx="4" fill="#F2F2F7"/>
+              <text x="78" y="21" fill="#86868B" font-family="'Manrope', sans-serif" font-size="9">auth.enterprise-portal.internal/login</text>
+
+              <!-- Login Form Container -->
+              <text x="24" y="58" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="15" font-weight="600">Enterprise SSO Sign In</text>
+              <text x="24" y="74" fill="#86868B" font-family="'Manrope', sans-serif" font-size="10">Corporate identity and security credentials</text>
+
+              <!-- Field 1: Work Email (RAW LEAK) -->
+              <text x="24" y="104" fill="#515154" font-family="'Manrope', sans-serif" font-size="10">Work Email Address</text>
+              <rect x="24" y="112" width="260" height="28" rx="6" fill="#F9F9FB" stroke="#E5E5EA"/>
+              <text x="34" y="130" fill="#1D1D1F" font-family="'Manrope', sans-serif" font-size="11">alex.mercer@cyberdefense.org</text>
+
+              <!-- Callout 1 -->
+              <rect x="294" y="114" width="132" height="24" rx="4" fill="rgba(255,59,48,0.10)" stroke="rgba(255,59,48,0.35)"/>
+              <text x="300" y="129" fill="#FF3B30" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="600">Visible on screen share</text>
+
+              <!-- Field 2: Password (EXPOSED) -->
+              <text x="24" y="158" fill="#515154" font-family="'Manrope', sans-serif" font-size="10">Master Security Password</text>
+              <rect x="24" y="166" width="260" height="28" rx="6" fill="#F9F9FB" stroke="#E5E5EA"/>
+              <text x="34" y="184" fill="#1D1D1F" font-family="'Manrope', sans-serif" font-size="11">Sup3rSecr3t#2026!</text>
+
+              <!-- Callout 2 -->
+              <rect x="294" y="168" width="132" height="24" rx="4" fill="rgba(255,59,48,0.10)" stroke="rgba(255,59,48,0.35)"/>
+              <text x="300" y="183" fill="#FF3B30" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="600">Shoulder surfing leak</text>
+
+              <!-- Field 3: 2FA One-Time Passcode -->
+              <text x="24" y="212" fill="#515154" font-family="'Manrope', sans-serif" font-size="10">Authenticator OTP Code</text>
+              <rect x="24" y="220" width="260" height="28" rx="6" fill="#F9F9FB" stroke="#E5E5EA"/>
+              <text x="34" y="238" fill="#1D1D1F" font-family="'Manrope', sans-serif" font-size="11">849 204 (Active for 20s)</text>
+
+              <!-- Callout 3 -->
+              <rect x="294" y="222" width="132" height="24" rx="4" fill="rgba(255,59,48,0.10)" stroke="rgba(255,59,48,0.35)"/>
+              <text x="300" y="237" fill="#FF3B30" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="600">Captured in recording</text>
+
+              <rect x="24" y="260" width="128" height="14" rx="3" fill="rgba(255,59,48,0.12)"/>
+              <text x="28" y="270" fill="#FF3B30" font-family="'Manrope', sans-serif" font-size="8" font-weight="700">HIGH RISK : UNPROTECTED</text>
+            </svg>
+          </div>
+
+          <div class="comparison-details">
+            <h4>Raw Screen Exposure</h4>
+            <p>During presentations, video calls, or working in public spaces, sensitive accounts and credentials are fully readable by colleagues, cameras, and software recordings.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: AFTER Protection (Privacy Shield) -->
+        <div class="comparison-card after">
+          <div class="comparison-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span>AFTER : Privacy Shield Protection</span>
+          </div>
+
+          <div class="comparison-svg-container">
+            <svg viewBox="0 0 440 280" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="svgBlurField" x="-10%" y="-10%" width="120%" height="130%">
+                  <feGaussianBlur stdDeviation="3.5"/>
+                </filter>
+              </defs>
+
+              <!-- Window Frame -->
+              <rect width="440" height="280" rx="10" fill="#FFFFFF" stroke="rgba(52,199,89,0.4)" stroke-width="1.5"/>
+              <circle cx="20" cy="18" r="4.5" fill="#FF5F56"/>
+              <circle cx="34" cy="18" r="4.5" fill="#FFBD2E"/>
+              <circle cx="48" cy="18" r="4.5" fill="#27C93F"/>
+              <rect x="70" y="11" width="220" height="14" rx="4" fill="#F2F2F7"/>
+              <text x="78" y="21" fill="#86868B" font-family="'Manrope', sans-serif" font-size="9">auth.enterprise-portal.internal/login</text>
+
+              <!-- Login Form Container -->
+              <text x="24" y="58" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="15" font-weight="600">Enterprise SSO Sign In</text>
+              <text x="24" y="74" fill="#86868B" font-family="'Manrope', sans-serif" font-size="10">Corporate identity and security credentials</text>
+
+              <!-- Field 1: Work Email (BLURRED) -->
+              <text x="24" y="104" fill="#515154" font-family="'Manrope', sans-serif" font-size="10">Work Email Address</text>
+              <rect x="24" y="112" width="260" height="28" rx="6" fill="#F9F9FB" stroke="rgba(0,122,255,0.25)"/>
+              <text x="34" y="130" fill="#1D1D1F" font-family="'Manrope', sans-serif" font-size="11" filter="url(#svgBlurField)">alex.mercer@cyberdefense.org</text>
+              <!-- Pin icon button on field 1 -->
+              <circle cx="266" cy="126" r="8" fill="#007AFF"/>
+              <path d="M264 122 H268 V127 H264 Z M266 127 V130" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Callout 1 -->
+              <rect x="294" y="114" width="132" height="24" rx="4" fill="rgba(0,122,255,0.08)" stroke="rgba(0,122,255,0.25)"/>
+              <text x="300" y="129" fill="#007AFF" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="600">Subtle frosted mask</text>
+
+              <!-- Field 2: Password (BLURRED) -->
+              <text x="24" y="158" fill="#515154" font-family="'Manrope', sans-serif" font-size="10">Master Security Password</text>
+              <rect x="24" y="166" width="260" height="28" rx="6" fill="#F9F9FB" stroke="rgba(0,122,255,0.25)"/>
+              <text x="34" y="184" fill="#1D1D1F" font-family="'Manrope', sans-serif" font-size="11" filter="url(#svgBlurField)">Sup3rSecr3t#2026!</text>
+              <!-- Pin icon button on field 2 -->
+              <circle cx="266" cy="180" r="8" fill="#007AFF"/>
+              <path d="M264 176 H268 V181 H264 Z M266 181 V184" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Callout 2 -->
+              <rect x="294" y="168" width="132" height="24" rx="4" fill="rgba(52,199,89,0.10)" stroke="rgba(52,199,89,0.3)"/>
+              <text x="300" y="183" fill="#34C759" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="600">0ms pre-paint blur</text>
+
+              <!-- Field 3: 2FA One-Time Passcode (BLURRED) -->
+              <text x="24" y="212" fill="#515154" font-family="'Manrope', sans-serif" font-size="10">Authenticator OTP Code</text>
+              <rect x="24" y="220" width="260" height="28" rx="6" fill="#F9F9FB" stroke="rgba(0,122,255,0.25)"/>
+              <text x="34" y="238" fill="#1D1D1F" font-family="'Manrope', sans-serif" font-size="11" filter="url(#svgBlurField)">849 204 (Active for 20s)</text>
+              <!-- Pin icon button on field 3 -->
+              <circle cx="266" cy="234" r="8" fill="#007AFF"/>
+              <path d="M264 230 H268 V235 H264 Z M266 235 V238" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Callout 3 -->
+              <rect x="294" y="222" width="132" height="24" rx="4" fill="rgba(52,199,89,0.10)" stroke="rgba(52,199,89,0.3)"/>
+              <text x="300" y="237" fill="#34C759" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="600">Instant hover reveal</text>
+
+              <rect x="24" y="260" width="152" height="14" rx="3" fill="rgba(52,199,89,0.12)"/>
+              <text x="28" y="270" fill="#34C759" font-family="'Manrope', sans-serif" font-size="8" font-weight="700">PROTECTED : SHIELD ACTIVE</text>
+            </svg>
+          </div>
+
+          <div class="comparison-details">
+            <h4>Apple Frosted Visual Protection</h4>
+            <p>Sensitive credentials are blurred instantly before rendering. When you need to read or verify a value, simply hover your cursor over the element to reveal it privately.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How Privacy Shield Saves You In Simple Terms -->
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="23 7 16 12 23 17 23 7"/>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+            </svg>
+          </div>
+          <h3>Screen Shares and Meetings</h3>
+          <p>Present your browser during Zoom, Google Meet, or Microsoft Teams calls without exposing client records, personal emails, or account balances.</p>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Coworking and Cafes</h3>
+          <p>Work confidently in open offices, coffee shops, and airports. People glancing at your screen cannot read sensitive credentials or financial details.</p>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>Video Demos and Tutorials</h3>
+          <p>Record product walkthroughs and bug reproductions on Loom without spending hours in video editors blurring passwords and tokens after the fact.</p>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h3>Cloud and Database Portals</h3>
+          <p>Browse cloud dashboards like Supabase, AWS, Stripe, and modern developer consoles safely. Production API secrets and connection strings remain masked automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SVG Architecture & Flowcharts Section -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">System Architecture</span>
+        <h2 class="section-title">Engineered for absolute privacy and zero layout shift.</h2>
+        <p class="section-description">
+          All detection and visual transformation runs directly inside the client engine using native browser APIs. No third-party network transmission is ever initiated.
+        </p>
+      </div>
+
+      <div class="architecture-grid">
+        <!-- Flowchart 1: Detection Pipeline -->
+        <div class="diagram-card">
+          <div class="diagram-header">
+            <div>
+              <h3 class="diagram-title">On-Device Detection and Masking Pipeline</h3>
+              <p class="diagram-subtitle">From incoming DOM elements to non-destructive visual blur and user reveal controls.</p>
+            </div>
+            <div class="diagram-badge">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Sub-millisecond Local Engine</span>
+            </div>
+          </div>
+
+          <div class="diagram-svg-container">
+            <svg viewBox="0 0 960 210" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="nodeShadow" x="-10%" y="-10%" width="120%" height="130%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.06"/>
+                </filter>
+              </defs>
+
+              <!-- Node 1: Web Page Content -->
+              <g transform="translate(20, 30)">
+                <rect width="160" height="140" rx="14" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5" filter="url(#nodeShadow)"/>
+                <circle cx="34" cy="36" r="14" fill="rgba(0,122,255,0.10)"/>
+                <path d="M28 36 L40 36 M34 30 L34 42" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
+                <text x="34" y="74" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="600">DOM Stream</text>
+                <text x="34" y="96" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Inputs, text nodes,</text>
+                <text x="34" y="112" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">tables &amp; dynamic SPAs</text>
+                <rect x="20" y="130" width="120" height="2" rx="1" fill="#007AFF"/>
+              </g>
+
+              <!-- Arrow 1 -->
+              <path d="M185 100 L215 100" stroke="#007AFF" stroke-width="2.5" stroke-dasharray="4,4" stroke-linecap="round"/>
+              <polygon points="215,96 225,100 215,104" fill="#007AFF"/>
+
+              <!-- Node 2: Native TreeWalker Engine -->
+              <g transform="translate(230, 30)">
+                <rect width="170" height="140" rx="14" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5" filter="url(#nodeShadow)"/>
+                <circle cx="34" cy="36" r="14" fill="rgba(52,199,89,0.10)"/>
+                <path d="M29 36 L33 40 L40 32" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="34" y="74" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="600">C++ TreeWalker</text>
+                <text x="34" y="96" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Sub-millisecond crawl</text>
+                <text x="34" y="112" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">0% recursion overhead</text>
+                <rect x="20" y="130" width="130" height="2" rx="1" fill="#34C759"/>
+              </g>
+
+              <!-- Arrow 2 -->
+              <path d="M405 100 L435 100" stroke="#34C759" stroke-width="2.5" stroke-dasharray="4,4" stroke-linecap="round"/>
+              <polygon points="435,96 445,100 435,104" fill="#34C759"/>
+
+              <!-- Node 3: Local Deterministic Validator -->
+              <g transform="translate(450, 30)">
+                <rect width="180" height="140" rx="14" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5" filter="url(#nodeShadow)"/>
+                <circle cx="34" cy="36" r="14" fill="rgba(255,149,0,0.10)"/>
+                <path d="M28 36 L34 30 L40 36 L34 42 Z" stroke="#FF9500" stroke-width="2" stroke-linejoin="round"/>
+                <text x="34" y="74" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="600">Local Validation</text>
+                <text x="34" y="96" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Luhn Mod 10 (Cards)</text>
+                <text x="34" y="112" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">RFC 5322 &amp; API Entropy</text>
+                <rect x="20" y="130" width="140" height="2" rx="1" fill="#FF9500"/>
+              </g>
+
+              <!-- Arrow 3 -->
+              <path d="M635 100 L665 100" stroke="#FF9500" stroke-width="2.5" stroke-dasharray="4,4" stroke-linecap="round"/>
+              <polygon points="665,96 675,100 665,104" fill="#FF9500"/>
+
+              <!-- Node 4: Non-Destructive DOM Application -->
+              <g transform="translate(680, 30)">
+                <rect width="250" height="140" rx="14" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5" filter="url(#nodeShadow)"/>
+                <circle cx="34" cy="36" r="14" fill="rgba(0,122,255,0.10)"/>
+                <path d="M28 32 H40 V42 H28 Z" fill="none" stroke="#007AFF" stroke-width="2" stroke-linejoin="round"/>
+                <text x="34" y="74" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="600">Non-Destructive Blur Layer</text>
+                <text x="34" y="96" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Parent CSS class + Inline mark</text>
+                <text x="34" y="112" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Apple Blue hover / Green pin</text>
+                <rect x="20" y="130" width="210" height="2" rx="1" fill="#007AFF"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Flowchart 2: Universal Framework & Zero-Blackout Architecture -->
+        <div class="diagram-card">
+          <div class="diagram-header">
+            <div>
+              <h3 class="diagram-title">Universal Framework Compatibility Architecture</h3>
+              <p class="diagram-subtitle">Engineered specifically for Next.js, React 18 SSR, Supabase, Vue, and Angular without hydration crashes.</p>
+            </div>
+            <div class="diagram-badge">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>Zero-Blackout Guarantee</span>
+            </div>
+          </div>
+
+          <div class="diagram-svg-container">
+            <svg viewBox="0 0 960 170" xmlns="http://www.w3.org/2000/svg">
+              <!-- Tier 1: Main World Guard -->
+              <g transform="translate(20, 20)">
+                <rect width="210" height="125" rx="12" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5"/>
+                <text x="24" y="42" fill="#007AFF" font-family="'Geist', sans-serif" font-size="12" font-weight="600">STAGE 1 : MAIN WORLD</text>
+                <text x="24" y="66" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="15" font-weight="600">Page Reconciliation Guard</text>
+                <text x="24" y="88" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Intercepts removeChild &amp; insertBefore</text>
+                <text x="24" y="104" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Shields React from detached node errors</text>
+              </g>
+
+              <!-- Connection 1 -->
+              <path d="M235 82 L275 82" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
+              <polygon points="275,78 285,82 275,86" fill="#007AFF"/>
+
+              <!-- Tier 2: Hydration Lifecycle Sync -->
+              <g transform="translate(290, 20)">
+                <rect width="210" height="125" rx="12" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5"/>
+                <text x="24" y="42" fill="#34C759" font-family="'Geist', sans-serif" font-size="12" font-weight="600">STAGE 2 : LIFECYCLE</text>
+                <text x="24" y="66" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="15" font-weight="600">Hydration Synchronization</text>
+                <text x="24" y="88" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Waits for initial DOM hydration</text>
+                <text x="24" y="104" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Eliminates SSR hydration mismatches</text>
+              </g>
+
+              <!-- Connection 2 -->
+              <path d="M505 82 L545 82" stroke="#34C759" stroke-width="2" stroke-linecap="round"/>
+              <polygon points="545,78 555,82 545,86" fill="#34C759"/>
+
+              <!-- Tier 3: Parent-Level Protection -->
+              <g transform="translate(560, 20)">
+                <rect width="210" height="125" rx="12" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.5"/>
+                <text x="24" y="42" fill="#FF9500" font-family="'Geist', sans-serif" font-size="12" font-weight="600">STAGE 3 : NON-DESTRUCTIVE</text>
+                <text x="24" y="66" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="15" font-weight="600">Parent-Class Blurring</text>
+                <text x="24" y="88" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Underlying text node stays in DOM</text>
+                <text x="24" y="104" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Fiber tree pointers remain 100% valid</text>
+              </g>
+
+              <!-- Connection 3 -->
+              <path d="M775 82 L815 82" stroke="#FF9500" stroke-width="2" stroke-linecap="round"/>
+              <polygon points="815,78 825,82 815,86" fill="#FF9500"/>
+
+              <!-- Tier 4: Stable Render -->
+              <g transform="translate(830, 20)">
+                <rect width="110" height="125" rx="12" fill="rgba(52,199,89,0.10)" stroke="#34C759" stroke-width="1.5"/>
+                <text x="18" y="52" fill="#34C759" font-family="'Geist', sans-serif" font-size="11" font-weight="600">RESULT</text>
+                <text x="18" y="78" fill="#1D1D1F" font-family="'Geist', sans-serif" font-size="14" font-weight="700">100% Stable</text>
+                <text x="18" y="100" fill="#515154" font-family="'Manrope', sans-serif" font-size="11">Zero Blackouts</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Highlights Grid -->
+  <section class="section" id="technology">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Capabilities</span>
+        <h2 class="section-title">Built with uncompromising privacy engineering.</h2>
+        <p class="section-description">
+          Engineered from scratch without third-party libraries, analytics trackers, or remote code execution.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <!-- Card 1 -->
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">100% On-Device Processing</h3>
+          <p class="tech-desc">
+            All text evaluations, regex scans, and checksum calculations happen locally on your processor. Zero network requests are permitted in the manifest.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">0ms Pre-Paint Masking</h3>
+          <p class="tech-desc">
+            Password inputs, card credentials, and OTP fields are masked via declarative CSS at document start. Eliminates single-frame visual leakage before compositor paints.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Universal Framework Immunity</h3>
+          <p class="tech-desc">
+            Engineered with a dedicated DOM Reconciliation Guard in the main world. Fully compatible with Next.js App Router, React 18 SSR, Supabase, Vue 3, and Angular.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Native C++ TreeWalker Speed</h3>
+          <p class="tech-desc">
+            Avoids recursive JavaScript DOM traversal by driving the browser engine's native TreeWalker API. Achieves 0.0% CPU consumption when pages are idle.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Luhn &amp; Checksum Validation</h3>
+          <p class="tech-desc">
+            Eliminates false positives by running ISO/IEC 7812 Luhn Mod 10 checksums on credit cards and ISO 7064 Mod 97-10 algorithms on international bank IBANs.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 3H8C7.45 3 7 3.45 7 4V6C7 7.1 6.55 8.15 5.76 8.94L4.29 10.41C4.04 10.66 4.18 11 4.54 11H10V18L12 21L14 18V11H19.46C19.82 11 19.96 10.66 19.71 10.41L18.24 8.94C17.45 8.15 17 7.1 17 6V4C17 3.45 16.55 3 16 3Z"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Apple SF Pin &amp; Reveal Controls</h3>
+          <p class="tech-desc">
+            Reveal protected content by hovering or clicking. Click the Apple Blue pushpin badge to lock an element in place, transitioning smoothly to emerald green.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sandbox -->
+  <section class="section" id="sandbox">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Sandbox</span>
+        <h2 class="section-title">Test pattern detection live in your browser.</h2>
+        <p class="section-description">
+          Click any preset below or type custom text into the input box to observe real-time detection, blurred markup generation, and pin controls.
+        </p>
+      </div>
+
+      <div class="sandbox-card">
+        <div class="sandbox-presets">
+          <button class="preset-chip active" data-preset="email">Email Address</button>
+          <button class="preset-chip" data-preset="card">Payment Card (Luhn Valid)</button>
+          <button class="preset-chip" data-preset="apikey">OpenAI API Key</button>
+          <button class="preset-chip" data-preset="jwt">JWT Session Token</button>
+          <button class="preset-chip" data-preset="phone">Phone Number</button>
+          <button class="preset-chip" data-preset="otp">OTP Verification Code</button>
+        </div>
+
+        <div class="sandbox-io-grid">
+          <div class="sandbox-panel">
+            <div class="panel-header">Raw Webpage Text (Input)</div>
+            <textarea id="sandboxInput" class="sandbox-input" placeholder="Type or paste any content containing sensitive information..."></textarea>
+          </div>
+
+          <div class="sandbox-panel">
+            <div class="panel-header">Privacy Shield Rendered Result (Live Output)</div>
+            <div id="sandboxOutput" class="sandbox-output"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Commitment Section -->
+  <section class="section" id="security">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Security Guarantees</span>
+        <h2 class="section-title">Verified zero telemetry and zero credential inspection.</h2>
+        <p class="section-description">
+          Privacy Shield is client-side software designed to protect your sensitive browsing data without compromise.
+        </p>
+      </div>
+
+      <div class="security-card">
+        <div class="security-checklist">
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="check-text">
+              <h4>Zero Telemetry or Analytics</h4>
+              <p>No analytics engines, ping requests, or user tracking are included. Verified by automated security test suites.</p>
+            </div>
+          </div>
+
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="check-text">
+              <h4>Password Values Never Accessed</h4>
+              <p>Password inputs are identified strictly by DOM input semantic attributes. The JavaScript engine never reads input.value.</p>
+            </div>
+          </div>
+
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="check-text">
+              <h4>Zero Remote Script Loading</h4>
+              <p>All scripts and brand fonts (Geist and Manrope) are 100% locally bundled. No CDN connections are ever made.</p>
+            </div>
+          </div>
+
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="check-text">
+              <h4>Local-Only Preference Storage</h4>
+              <p>All user configurations and website exclusions are persisted strictly inside your browser's local storage partition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minimal Apple Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icons/icon.svg" width="22" height="22" alt="Privacy Shield" class="footer-icon">
+        <span class="footer-copy">Privacy Shield by <a href="https://www.instagram.com/leavorstudio/" target="_blank" rel="noopener noreferrer" class="footer-studio-link">L’ÆVOR STUDIO</a></span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#install" class="footer-link">Installation Guide</a>
+        <a href="#comparison" class="footer-link">Visual Demo</a>
+        <a href="#architecture" class="footer-link">Architecture</a>
+        <a href="#technology" class="footer-link">Technology</a>
+        <a href="#sandbox" class="footer-link">Interactive Sandbox</a>
+        <a href="https://www.instagram.com/leavorstudio/" target="_blank" rel="noopener noreferrer" class="footer-link">L’ÆVOR STUDIO</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

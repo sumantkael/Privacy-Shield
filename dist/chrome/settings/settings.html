@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Shield Settings</title>
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="../content/styles.css">
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body class="apple-settings">
+  <div class="settings-layout">
+    <!-- Left macOS-style Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="app-titles">
+          <h2>Privacy Shield</h2>
+          <span>Preferences</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="general">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span>General</span>
+        </button>
+
+        <button class="nav-item" data-tab="categories">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>Categories</span>
+        </button>
+
+        <button class="nav-item" data-tab="exclusions">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+          </svg>
+          <span>Website Exclusions</span>
+        </button>
+
+        <button class="nav-item" data-tab="sandbox">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+          <span>Live Test Sandbox</span>
+        </button>
+
+        <button class="nav-item" data-tab="security">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>Security & Privacy</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="resetSettingsBtn" class="apple-button secondary small">
+          Reset to Defaults
+        </button>
+        <div class="sidebar-studio-credit">
+          <span>by <a href="https://www.instagram.com/leavorstudio/" target="_blank" rel="noopener noreferrer">L’ÆVOR STUDIO</a></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-pane">
+      <!-- GENERAL TAB -->
+      <section id="tab-general" class="tab-panel active">
+        <div class="panel-header">
+          <h1>General Preferences</h1>
+          <p class="panel-description">Manage global protection behavior and visual interaction rules.</p>
+        </div>
+
+        <div class="section-title">GLOBAL PROTECTION</div>
+        <div class="apple-inset-group">
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Enable Privacy Shield</span>
+              <span class="row-desc">Automatically protect sensitive data across supported websites</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" id="settingMasterToggle" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="section-title">REVEAL BEHAVIOR</div>
+        <div class="apple-inset-group">
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Reveal on Click</span>
+              <span class="row-desc">Clicking a blurred element unmasks the content</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" id="settingRevealClick" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Reveal on Hover</span>
+              <span class="row-desc">Hovering mouse cursor over a blurred element unmasks it temporarily</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" id="settingRevealHover">
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Allow Temporary Pinning</span>
+              <span class="row-desc">Keep unmasked element pinned open using pin button or 'P' key</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" id="settingAllowPin" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Automatic Re-blur Timeout</span>
+              <span class="row-desc">Duration before an unmasked element automatically blurs again</span>
+            </div>
+            <div class="slider-control">
+              <input type="range" id="settingReblurSlider" min="1000" max="15000" step="500" value="4000">
+              <span id="reblurValLabel" class="val-badge">4.0s</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">VISUAL SHIELD INTENSITY</div>
+        <div class="apple-inset-group">
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Blur Strength</span>
+              <span class="row-desc">CSS Gaussian blur filter radius (zero layout shifting guaranteed)</span>
+            </div>
+            <div class="slider-control">
+              <input type="range" id="settingBlurRadius" min="3" max="12" step="1" value="6">
+              <span id="blurRadiusValLabel" class="val-badge">6px</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORIES TAB -->
+      <section id="tab-categories" class="tab-panel">
+        <div class="panel-header">
+          <h1>Detection Categories</h1>
+          <p class="panel-description">Fine-tune the individual classes of sensitive data scanned by Privacy Shield.</p>
+        </div>
+
+        <div class="section-title">CREDENTIALS & TOKENS</div>
+        <div class="apple-inset-group">
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Password Fields</span>
+              <span class="row-desc">Protected by input type and semantics without inspecting raw values</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="password" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">API Keys & Developer Secrets</span>
+              <span class="row-desc">OpenAI, AWS, GitHub PATs, Slack, Stripe, and Google API keys</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="apiKey" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Authentication Tokens & JWTs</span>
+              <span class="row-desc">JSON Web Tokens (Bearer eyJ...), session auth headers</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="authToken" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">OTPs & 2FA Codes</span>
+              <span class="row-desc">One-time passcodes, verification codes with contextual keyword proximity</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="otp" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="section-title">FINANCIAL & PERSONAL DATA</div>
+        <div class="apple-inset-group">
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Credit & Debit Cards</span>
+              <span class="row-desc">Visa, Mastercard, Amex, Discover with Mod 10 Luhn checksum validation</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="creditCard" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Bank Accounts & IBANs</span>
+              <span class="row-desc">International Bank Account Numbers (Mod 97 check) & routing numbers</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="bankAccount" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Email Addresses</span>
+              <span class="row-desc">RFC 5322 pattern with file extension & TLD false-positive rejection</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="email" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Phone Numbers</span>
+              <span class="row-desc">International E.164 and localized numbers filtered against dates & IPs</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="phone" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="inset-row">
+            <div class="row-text">
+              <span class="row-title">Personal Addresses & SSN</span>
+              <span class="row-desc">Social Security Numbers & physical street address designations</span>
+            </div>
+            <label class="apple-switch">
+              <input type="checkbox" class="setting-cat" data-cat="personalInfo" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXCLUSIONS TAB -->
+      <section id="tab-exclusions" class="tab-panel">
+        <div class="panel-header">
+          <h1>Website Exclusions</h1>
+          <p class="panel-description">Websites listed here will not be blurred. Subdomains are supported (e.g. *.internal.net or domain.com).</p>
+        </div>
+
+        <div class="exclusion-controls">
+          <div class="add-domain-box">
+            <input type="text" id="newDomainInput" placeholder="e.g. localhost, gitlab.company.internal" class="apple-input">
+            <button id="addDomainBtn" class="apple-button primary">Add Domain</button>
+          </div>
+          <input type="search" id="searchExclusionsInput" placeholder="Filter exclusions..." class="apple-input search-input">
+        </div>
+
+        <div class="section-title">EXCLUDED WEBSITES (<span id="exclusionCountLabel">0</span>)</div>
+        <div class="apple-inset-group exclusion-list" id="exclusionListContainer">
+          <!-- Dynamically populated rows -->
+        </div>
+      </section>
+
+      <!-- LIVE TEST SANDBOX -->
+      <section id="tab-sandbox" class="tab-panel">
+        <div class="panel-header">
+          <h1>Live Test Sandbox</h1>
+          <p class="panel-description">Test Privacy Shield's real-time detection, blurring, and reveal interactions immediately.</p>
+        </div>
+
+        <div class="sandbox-card">
+          <div class="sandbox-toolbar">
+            <button id="sandboxPresetBtn" class="apple-button secondary small">Load Sample Data</button>
+            <button id="sandboxScanBtn" class="apple-button primary small">Scan Sandbox</button>
+          </div>
+
+          <div class="sandbox-body" id="sandboxPreviewArea">
+            <div class="mock-profile">
+              <div class="mock-avatar">PS</div>
+              <div class="mock-info">
+                <h3>Alex Rivers</h3>
+                <p>Security Engineer at FinTech Labs</p>
+              </div>
+            </div>
+
+            <div class="mock-table">
+              <div class="mock-row">
+                <span class="mock-label">Email:</span>
+                <span class="mock-val">alex.rivers@fintechlabs.internal</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">Phone:</span>
+                <span class="mock-val">+1 (415) 555-0199</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">Credit Card:</span>
+                <span class="mock-val">4532 0150 1234 5671</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">OpenAI Key:</span>
+                <span class="mock-val">sk-proj-7aB8c9D0e1F2g3H4i5J6k7L8m9N0o1P2q3R4s5T6u7V8</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">AWS Key ID:</span>
+                <span class="mock-val">AKIAIOSFODNN7EXAMPLE</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">GitHub Token:</span>
+                <span class="mock-val">ghp_aB1cD2eF3gH4iJ5kL6mN7oP8qR9sT0uV1wX2</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">OTP Verification:</span>
+                <span class="mock-val">Your 2FA security code is 849204</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">IBAN:</span>
+                <span class="mock-val">GB82 WEST 1234 5698 7654 32</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">Address:</span>
+                <span class="mock-val">742 Evergreen Terrace, Springfield</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-label">SSN:</span>
+                <span class="mock-val">123-45-6789</span>
+              </div>
+            </div>
+
+            <div class="mock-inputs">
+              <div class="input-field">
+                <label>Password Input Test:</label>
+                <input type="password" value="SuperSecretPassword123!" class="apple-input">
+              </div>
+              <div class="input-field">
+                <label>Card Input Test:</label>
+                <input type="text" autocomplete="cc-number" value="4532 0150 1234 5671" class="apple-input">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECURITY & PRIVACY TAB -->
+      <section id="tab-security" class="tab-panel">
+        <div class="panel-header">
+          <h1>Security & Privacy Architecture</h1>
+          <p class="panel-description">Complete audit overview of Privacy Shield's local-first privacy commitments.</p>
+        </div>
+
+        <div class="apple-inset-group info-group">
+          <div class="info-item">
+            <div class="info-icon check">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="info-content">
+              <h3>100% On-Device Local Processing</h3>
+              <p>Every detection routine, regular expression, and DOM scan runs strictly inside your local browser JavaScript engine. No content or keystrokes ever leave your computer.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon check">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="info-content">
+              <h3>Zero Telemetry, Tracking, or Remote JavaScript</h3>
+              <p>Privacy Shield does not use Google Analytics, Sentry, external CDNs, or remote API endpoints. All fonts (Geist & Manrope) and icons are bundled locally inside the extension archive.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon check">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="info-content">
+              <h3>Password Value Protection</h3>
+              <p>Privacy Shield never accesses, inspects, or logs the actual raw value of password input elements. It identifies the field via DOM attributes and applies visual protection directly to the rendered element.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon notice">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </div>
+            <div class="info-content">
+              <h3>Security Scope & Technical Limitations</h3>
+              <p>Visual blurring is designed for screen-privacy against shoulder surfing, screen-sharing, recording, and accidental visual disclosure. It modifies visual presentation via CSS. It does <strong>not</strong> prevent malicious website scripts, other privileged browser extensions, DevTools DOM inspection, or low-level OS screen capture tools from reading underlying webpage memory.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="settings.js"></script>
+</body>
+</html>

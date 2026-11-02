@@ -1,0 +1,75 @@
+{
+  "manifest_version": 3,
+  "name": "Privacy Shield",
+  "version": "1.0.0",
+  "description": "Automatically detect and visually blur sensitive information (passwords, cards, emails, API keys, tokens) with Apple-inspired ergonomics.",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "content/page-guard.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": ["<all_urls>"],
+      "css": [
+        "assets/fonts.css",
+        "content/styles.css"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    },
+    "default_title": "Privacy Shield"
+  },
+  "options_ui": {
+    "page": "settings/settings.html",
+    "open_in_tab": true
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/fonts/*",
+        "assets/fonts/geist/*",
+        "assets/fonts/manrope/*",
+        "assets/fonts.css",
+        "assets/icons/*",
+        "content/styles.css"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

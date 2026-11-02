@@ -1,0 +1,195 @@
+/**
+ * Privacy Shield - Content Visual Protection Styles
+ * Apple Human Interface Design aesthetics for visual blurring and micro-interactions.
+ */
+
+:root {
+  --ps-blur-radius: 6px;
+  --ps-apple-green: #34C759;
+  --ps-apple-blue: #007AFF;
+  --ps-glass-bg: rgba(240, 240, 245, 0.7);
+  --ps-glass-border: rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ps-glass-bg: rgba(30, 30, 32, 0.75);
+    --ps-glass-border: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* 0. Declarative Pre-Paint Masking (0ms Zero-Frame Leak Protection) */
+input[type="password"],
+input[autocomplete*="password" i],
+input[name*="password" i],
+input[name*="passwd" i],
+input[name*="pwd" i],
+input[id*="password" i],
+input[autocomplete*="cc-number" i],
+input[autocomplete*="cc-csc" i],
+input[autocomplete*="one-time-code" i] {
+  filter: blur(var(--ps-blur-radius, 6px)) !important;
+  -webkit-filter: blur(var(--ps-blur-radius, 6px)) !important;
+}
+
+/* 1. Inline Text Blurred Wrapper */
+.ps-shield-blur {
+  display: inline;
+  position: relative;
+  background-color: rgba(128, 128, 136, 0.14) !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
+  border-radius: 4px;
+  padding: 0 2px;
+  margin: 0;
+  cursor: pointer;
+  filter: blur(var(--ps-blur-radius, 6px));
+  -webkit-filter: blur(var(--ps-blur-radius, 6px));
+  user-select: none;
+  -webkit-user-select: none;
+  transition: filter 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+  vertical-align: baseline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Hover preview effect */
+.ps-shield-blur:hover {
+  background-color: rgba(128, 128, 136, 0.24) !important;
+}
+
+/* Focused via keyboard tab */
+.ps-shield-blur:focus-visible {
+  outline: 2px solid var(--ps-apple-blue);
+  outline-offset: 2px;
+}
+
+/* 2. Revealed State */
+.ps-shield-blur.ps-revealed {
+  filter: blur(0px) !important;
+  -webkit-filter: blur(0px) !important;
+  user-select: text;
+  -webkit-user-select: text;
+  background-color: rgba(52, 199, 89, 0.12) !important;
+  box-shadow: 0 0 0 1px rgba(52, 199, 89, 0.45);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 3. Pinned State */
+.ps-shield-blur.ps-pinned {
+  box-shadow: 0 0 0 1.5px var(--ps-apple-green), 0 2px 8px rgba(52, 199, 89, 0.25);
+  background-color: rgba(52, 199, 89, 0.16) !important;
+}
+
+/* 4. Apple-style Adaptive Pin Button */
+.ps-pin-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  margin: 0 0 0 6px !important;
+  padding: 0 !important;
+  vertical-align: middle !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  z-index: 999999 !important;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, box-shadow 0.15s ease !important;
+  outline: none !important;
+  flex-shrink: 0 !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  background-color: #007AFF !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #0056B3 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+.ps-pin-btn:hover {
+  transform: scale(1.18) !important;
+  background-color: #0066D6 !important;
+  box-shadow: 0 3px 10px rgba(0, 122, 255, 0.55) !important;
+}
+
+.ps-pin-btn:active {
+  transform: scale(0.95) !important;
+}
+
+/* 4A. Pinned Active State: Apple Emerald Green with White Pin Icon */
+.ps-pin-btn.active {
+  background-color: #34C759 !important;
+  border-color: #248A3D !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(52, 199, 89, 0.75), 0 2px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+.ps-pin-btn.active:hover {
+  transform: scale(1.18) !important;
+  background-color: #2DB84D !important;
+  box-shadow: 0 0 14px rgba(52, 199, 89, 0.9), 0 3px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+.ps-pin-btn svg {
+  display: block !important;
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  max-width: 12px !important;
+  max-height: 12px !important;
+  pointer-events: none !important;
+  fill: #FFFFFF !important;
+  color: #FFFFFF !important;
+  overflow: visible !important;
+}
+
+.ps-pin-btn svg path {
+  fill: #FFFFFF !important;
+  stroke: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 5. Input Elements Protection */
+input.ps-shield-input,
+textarea.ps-shield-input {
+  filter: blur(var(--ps-blur-radius, 6px)) !important;
+  -webkit-filter: blur(var(--ps-blur-radius, 6px)) !important;
+  transition: filter 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease !important;
+  user-select: none;
+}
+
+/* Automatically reveal input when actively focused by user */
+input.ps-shield-input:focus,
+textarea.ps-shield-input:focus,
+input.ps-shield-input.ps-revealed,
+textarea.ps-shield-input.ps-revealed {
+  filter: blur(0px) !important;
+  -webkit-filter: blur(0px) !important;
+  user-select: text;
+}
+
+/* High contrast mode accessibility */
+@media (prefers-contrast: more) {
+  .ps-shield-blur {
+    background-color: #000000 !important;
+    color: #000000 !important;
+  }
+  .ps-shield-blur.ps-revealed {
+    background-color: transparent !important;
+    color: inherit !important;
+    outline: 2px solid #000000 !important;
+  }
+}

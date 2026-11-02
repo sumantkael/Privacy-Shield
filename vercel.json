@@ -1,0 +1,46 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/downloads/privacy-shield-firefox.xpi",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/x-xpinstall"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"privacy-shield-firefox.xpi\""
+        }
+      ]
+    },
+    {
+      "source": "/downloads/privacy-shield-chrome.zip",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/zip"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"privacy-shield-chrome.zip\""
+        }
+      ]
+    },
+    {
+      "source": "/downloads/privacy-shield-firefox.zip",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/zip"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"privacy-shield-firefox.zip\""
+        }
+      ]
+    }
+  ]
+}
